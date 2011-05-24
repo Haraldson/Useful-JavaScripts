@@ -36,7 +36,7 @@ InputTextReplacer.prototype = {
 
 $(function()
 {
-	var CHESSInputTextReplacer = new InputTextReplacer(
+	var SITEInputTextReplacer = new InputTextReplacer(
 	{
 		inputs: 'input.ireplace, textarea.ireplace',
 		hideLabels: true
