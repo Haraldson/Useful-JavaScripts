@@ -1,5 +1,5 @@
 /*
- *  Written by: Hein Haraldson Berg @ www.keyteq.no
+ *  Written by: Hein Haraldson Berg
  */
 
 var GenericFader = function(args)
@@ -228,7 +228,7 @@ GenericFader.prototype = {
 
 $(function()
 {
-    var SAFEGenericFader = new GenericFader(
+    var SITEGenericFader = new GenericFader(
     {
         selector:
         {

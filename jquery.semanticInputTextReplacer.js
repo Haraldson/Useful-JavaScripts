@@ -1,3 +1,7 @@
+/*
+ *  Written by: Hein Haraldson Berg
+ */
+
 var InputTextReplacer = function(args)
 {
 	if($(args.inputs).length > 0)
