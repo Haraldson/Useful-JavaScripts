@@ -53,7 +53,7 @@ SemanticInputTextReplacer.prototype = {
 
 $(function()
 {
-    var SITE_SemanticInputTextReplacer = new InputTextReplacer(
+    var SITE_SemanticInputTextReplacer = new SemanticInputTextReplacer(
     {
         inputs: 'input.ireplace, textarea.ireplace',
         hideLabels: false
