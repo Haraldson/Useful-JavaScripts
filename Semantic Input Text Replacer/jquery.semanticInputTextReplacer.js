@@ -9,32 +9,45 @@ var InputTextReplacer = function(args)
 }
 
 InputTextReplacer.prototype = {
+    placeholderSupport: false,
     init: function(args)
     {
         var self = this;
-        this.inputs = $(args.inputs).filter(':text, textarea');
+        this.placeholderSupport = 'placeholder' in document.createElement('input');
         
-        this.inputs.each(function(i, elem)
-        {
-            var label = $('label[for="' + $(this).attr('id') + '"]');
-            if(args.hideLabels)
-                $(label).hide();
-
-            var labelText = $(label).text();
-        
-            $(this)
-                .val(labelText)
-                .focus(function()
+        $(args.inputs).filter(':text, textarea')
+            .each(function()
+            {
+                var label = $('label[for="' + $(this).attr('id') + '"]');
+                
+                if(args.hideLabels)
+                    label.hide();
+                                
+                var placeholderValue = $(this).attr('placeholder'),
+                    labelValue = label.text();
+                
+                if(self.placeholderSupport && (typeof placeholderValue === 'undefined' || placeholderValue === ''))
                 {
-                    if($(this).val() == labelText)
-                        $(this).val('');
-                })
-                .blur(function()
+                    $(this).attr('placeholder', labelValue);
+                }
+                else if(!self.placeholderSupport)// || typeof placeholderValue === 'undefined' || placeholderValue === '')
                 {
-                    if(($(this).val() != labelText) && ($(this).val() == ''))
-                        $(this).val(labelText);
-                });
-        });
+                    var placeholderText = labelValue;
+                    
+                    $(this)
+                        .val(placeholderText)
+                        .focus(function()
+                        {
+                            if($(this).val() === placeholderText)
+                                $(this).val('');
+                        })
+                        .blur(function()
+                        {
+                            if(($(this).val() !== placeholderText) && ($(this).val() === ''))
+                                $(this).val(placeholderText);
+                        });
+                }
+            });
     }
 };
 
@@ -43,6 +56,6 @@ $(function()
     var SITEInputTextReplacer = new InputTextReplacer(
     {
         inputs: 'input.ireplace, textarea.ireplace',
-        hideLabels: true
+        hideLabels: false
     });
 });
