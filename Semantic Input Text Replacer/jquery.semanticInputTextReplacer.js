@@ -23,8 +23,8 @@ SemanticInputTextReplacer.prototype = {
                 if(args.hideLabels)
                     label.hide();
                                 
-                var placeholderValue = $(this).attr('placeholder'),
-                    labelValue = label.text();
+                var placeholderValue = $(this).attr('placeholder');
+                var labelValue = label.text();
                 
                 if(self.placeholderSupport && (typeof placeholderValue === 'undefined' || placeholderValue === ''))
                 {
