@@ -2,13 +2,13 @@
  *  Written by: Hein Haraldson Berg
  */
 
-var InputTextReplacer = function(args)
+var SemanticInputTextReplacer = function(args)
 {
     if($(args.inputs).length > 0)
         this.init(args);
 }
 
-InputTextReplacer.prototype = {
+SemanticInputTextReplacer.prototype = {
     placeholderSupport: false,
     init: function(args)
     {
@@ -30,7 +30,7 @@ InputTextReplacer.prototype = {
                 {
                     $(this).attr('placeholder', labelValue);
                 }
-                else if(!self.placeholderSupport)// || typeof placeholderValue === 'undefined' || placeholderValue === '')
+                else if(!self.placeholderSupport)
                 {
                     var placeholderText = labelValue;
                     
@@ -53,7 +53,7 @@ InputTextReplacer.prototype = {
 
 $(function()
 {
-    var SITEInputTextReplacer = new InputTextReplacer(
+    var SITE_SemanticInputTextReplacer = new InputTextReplacer(
     {
         inputs: 'input.ireplace, textarea.ireplace',
         hideLabels: false
